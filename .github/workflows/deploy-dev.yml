@@ -47,20 +47,20 @@ jobs:
       - run: echo "${{ needs.projects.outputs.matrix }}"
     needs: projects
 
-  # deploy:
-  #   name: Deploy
-  #   uses: ./.github/workflows/reusable.yml
-  #   strategy:
-  #     fail-fast: true
-  #     matrix: ${{ fromJSON(needs.projects.outputs.matrix) }}
-  #   with:
-  #     env-code: ${{ matrix.env-code }}
-  #     rg-suffix: ${{ matrix.rg-suffix }}
-  #     project-name: ${{ matrix.project.name }}
-  #     project-path: ${{ matrix.project.path }}
-  #     project-type: ${{ matrix.project.type }}
-  #     skip: ${{ matrix.project.skip }}
-  #     slot: slot
-  #     ref: ${{ inputs.ref }}
-  #   needs: projects
-  #   secrets: inherit
+  deploy:
+    name: Deploy
+    uses: ./.github/workflows/reusable.yml
+    strategy:
+      fail-fast: true
+      matrix: ${{ fromJSON(needs.projects.outputs.matrix) }}
+    with:
+      env-code: ${{ matrix.env-code }}
+      rg-suffix: ${{ matrix.rg-suffix }}
+      project-name: ${{ matrix.project.name }}
+      project-path: ${{ matrix.project.path }}
+      project-type: ${{ matrix.project.type }}
+      skip: ${{ matrix.project.skip }}
+      slot: slot
+      ref: ${{ inputs.ref }}
+    needs: projects
+    secrets: inherit

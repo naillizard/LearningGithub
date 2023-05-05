@@ -1,0 +1,10 @@
+{
+  "project":
+    [
+      { "name": "project1", "path": "Services.Project1", "type": "webapp" },
+      { "name": "project2", "path": "Services.Project2" },
+      { "name": "project3", "path": "Services.Project3", "skip": true },
+    ],
+  "env-code": "dev-anz",
+  "rg-suffix": "dev-ae",
+}

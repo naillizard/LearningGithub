@@ -1,0 +1,49 @@
+name: Deploy Dev
+run-name: Deploying to Dev Environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        type: string
+        description: "Branch or tag"
+        required: false
+        default: "main"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  projects:
+    name: Read projects.json for matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: |
+          content=`cat .github/projects.json`
+          # the following lines are only required for multi line json
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          # end of optional handling for multi line json
+          echo "matrix=$content" >> $GITHUB_OUTPUT
+
+  deploy:
+    name: Deploy
+    uses: ./.github/workflows/reusable.yml
+    strategy:
+      fail-fast: true
+      matrix: ${{ fromJSON(needs.projects.outputs.matrix) }}
+    with:
+      env-code: ${{ matrix.env-code }}
+      rg-suffix: ${{ matrix.rg-suffix }}
+      project-name: ${{ matrix.project.name }}
+      project-path: ${{ matrix.project.path }}
+      project-type: ${{ matrix.project.type }}
+      skip: ${{ matrix.project.skip }}
+      slot: slot
+      ref: ${{ inputs.ref }}
+    needs: projects
+    secrets: inherit

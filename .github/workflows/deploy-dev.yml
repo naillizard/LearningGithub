@@ -28,7 +28,7 @@ jobs:
 
       - id: set-matrix
         run: |
-          content=$(cat ./.github/projects.json)
+          content=$(jq -c . ./.github/projects.json)
           # the following lines are only required for multi line json
           #content="${content//'%'/'%25'}"
           #content="${content//$'\n'/'%0A'}"

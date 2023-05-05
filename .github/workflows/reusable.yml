@@ -52,12 +52,12 @@ jobs:
           fetch-depth: 0
           ref: ${{ inputs.ref }}
 
-      - if: inputs.project-type == "functionapp"
+      - if: inputs.project-type == 'functionapp'
         name: ${{ inputs.project-name }}
         run: |
           echo "Deploying FunctionApp ${{ inputs.project-name }} - ${{ inputs.project-path }} - ${{ inputs.project-type }} - ${{ inputs.env-code }}"
 
-      - if: inputs.project-type == "webapp"
+      - if: inputs.project-type == 'webapp'
         name: ${{ inputs.project-name }}
         run: |
           echo "Deploying WebApp ${{ inputs.project-name }} - ${{ inputs.project-path }} - ${{ inputs.project-type }} - ${{ inputs.env-code }}"

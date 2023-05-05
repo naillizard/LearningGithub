@@ -30,6 +30,13 @@ jobs:
           # end of optional handling for multi line json
           echo "matrix=$content" >> $GITHUB_OUTPUT
 
+  verify:
+    name: Verify OUTPUT
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ needs.projects.outputs.matrix }}"
+    needs: projects
+
   deploy:
     name: Deploy
     uses: ./.github/workflows/reusable.yml

@@ -15,7 +15,7 @@ on:
       project-type:
         type: string
         description: "Type of the project to deploy"
-        required: false
+        required: true
         default: "functionapp"
       skip:
         type: boolean

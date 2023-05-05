@@ -34,6 +34,11 @@ on:
         type: string
         description: "Slot to deploy to"
         required: false
+      ref:
+        type: string
+        description: "Branch or tag"
+        required: false
+        default: "main"
 
 jobs:
   reusable:
@@ -45,6 +50,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: ${{ inputs.ref }}
 
       - if: inputs.project-type == "functionapp"
         name: ${{ inputs.project-name }}

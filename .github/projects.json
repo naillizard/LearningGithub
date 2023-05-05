@@ -5,13 +5,15 @@
       "path": "Services.Project1",
       "type": "webapp",
       "env-code": "dev-anz",
-      "rg-suffix": "dev-ae"
+      "rg-suffix": "dev-ae",
+      "skip": false
     },
     {
       "name": "project2",
       "path": "Services.Project2",
       "env-code": "dev-anz",
-      "rg-suffix": "dev-ae"
+      "rg-suffix": "dev-ae",
+      "skip": false
     },
     {
       "name": "project3",

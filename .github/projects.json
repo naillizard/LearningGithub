@@ -1,20 +1,24 @@
 {
-  "project": [
+  "include": [
     {
       "name": "project1",
       "path": "Services.Project1",
-      "type": "webapp"
+      "type": "webapp",
+      "env-code": "dev-anz",
+      "rg-suffix": "dev-ae"
     },
     {
       "name": "project2",
-      "path": "Services.Project2"
+      "path": "Services.Project2",
+      "env-code": "dev-anz",
+      "rg-suffix": "dev-ae"
     },
     {
       "name": "project3",
       "path": "Services.Project3",
+      "env-code": "dev-anz",
+      "rg-suffix": "dev-ae",
       "skip": true
     }
-  ],
-  "env-code": "dev-anz",
-  "rg-suffix": "dev-ae"
+  ]
 }

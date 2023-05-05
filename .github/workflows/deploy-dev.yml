@@ -58,10 +58,10 @@ jobs:
     with:
       env-code: ${{ matrix.env-code }}
       rg-suffix: ${{ matrix.rg-suffix }}
-      project-name: ${{ matrix.project.name }}
-      project-path: ${{ matrix.project.path }}
-      project-type: ${{ matrix.project.type }}
-      skip: ${{ matrix.project.skip }}
+      project-name: ${{ matrix.name }}
+      project-path: ${{ matrix.path }}
+      project-type: ${{ matrix.type }}
+      skip: ${{ matrix.skip }}
       slot: slot
       ref: ${{ inputs.ref }}
     needs: projects

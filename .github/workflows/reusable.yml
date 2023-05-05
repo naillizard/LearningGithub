@@ -43,7 +43,7 @@ on:
 jobs:
   reusable:
     name: Reusable Job
-    if: !inputs.skip
+    if: inputs.skip != true
     runs-on: ubuntu-latest
 
     steps:
